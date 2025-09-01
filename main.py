@@ -4,7 +4,8 @@ from PIL import Image
 
 pytesseract.pytesseract.tesseract_cmd = r"/usr/bin/tesseract"
 
-img = cv2.imread("images/liza.jpg")
+img = cv2.imread("images/plate1.jpg")
+
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Preprocess (simple for now)
@@ -18,3 +19,4 @@ custom_config = r'--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRS
 text = pytesseract.image_to_string(pil_img, config=custom_config)
 
 print("Detected:", text)
+
