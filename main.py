@@ -4,7 +4,7 @@ from PIL import Image
 
 pytesseract.pytesseract.tesseract_cmd = r"/usr/bin/tesseract"
 
-img = cv2.imread("images/plate1.jpg")
+img = cv2.imread("images/geet.jpg")
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
