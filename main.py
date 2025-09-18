@@ -92,7 +92,7 @@ from ultralytics import YOLO
 pytesseract.pytesseract.tesseract_cmd = r"/usr/bin/tesseract"
 
 # Regex for Indian plate formats
-PLATE_REGEX = re.compile(r"^[A-Z]{2}[0-9]{1,2}[A-Z]{1,2}[0-9]{1,4}$")
+PLATE_REGEX = re.compile(r"^[A-Z]{2}[0-9]{1,2}[A-Z]{0,3}[0-9]{1,4}$")
 
 # Load YOLO model (your trained weights)
 yolo_model = YOLO("models/license_plate_detector.pt")  # <-- put your YOLO weights here
@@ -188,5 +188,5 @@ def detect_and_ocr(path):
 # MAIN
 # -----------------------------
 if __name__ == "__main__":
-    path = "images/bordoloi.jpeg"  # full uncropped image
+    path = "images/rishab.jpeg"  # full uncropped image
     plate_text = detect_and_ocr(path)
