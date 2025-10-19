@@ -15,3 +15,5 @@ fine_tuning/
 .env
 
 certs/
+
+anpr_sample.py
