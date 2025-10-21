@@ -10,16 +10,10 @@ wheels/
 .venv
 
 # training folder
-fine_tuning/dataset/cropped/
-fine_tuning/training_data/
-fine_tuning/filtered_data/
-fine_tuning/boxed_data/
-fine_tuning/output/
+fine_tuning/
 
 .env
 
 certs/
 
 anpr_sample.py
-
-.gitattributes
