@@ -1,2 +1,2 @@
 fine_tuning/ merge=ours
-.gitattributes merge=ours
+.gitignore merge=ours
