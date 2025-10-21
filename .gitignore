@@ -10,7 +10,11 @@ wheels/
 .venv
 
 # training folder
-fine_tuning/
+fine_tuning/dataset/cropped/
+fine_tuning/training_data/
+fine_tuning/filtered_data/
+fine_tuning/boxed_data/
+fine_tuning/output/
 
 .env
 
