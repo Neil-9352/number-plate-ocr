@@ -49,7 +49,7 @@ def get_car_bounding_boxes(image_path):
         "Detect all cars in this image. "
         "Return a JSON array of objects, each with normalized YOLO coordinates "
         "(x_center, y_center, width, height) between 0 and 1, "
-        "and use class_id = 0 for all cars. "
+        "and use class_id = 1 for all cars. "
         "Output ONLY the JSON, no markdown, no text before or after it."
     )
 
