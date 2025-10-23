@@ -28,3 +28,4 @@ yolov8n.pt
 certs/
 
 anpr_sample.py
+try.py
