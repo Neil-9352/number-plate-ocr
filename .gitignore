@@ -17,7 +17,11 @@ fine_tuning/boxed_data/
 fine_tuning/output/
 
 training/dataset/car/images/
-training/dataset/clean_images.py
+training/dataset/clean_images.py/
+training/dataset/car_bike_dataset.yaml
+training/runs/
+
+yolov8n.pt
 
 .env
 
