@@ -16,6 +16,9 @@ fine_tuning/filtered_data/
 fine_tuning/boxed_data/
 fine_tuning/output/
 
+training/dataset/car/images/
+training/dataset/clean_images.py
+
 .env
 
 certs/
