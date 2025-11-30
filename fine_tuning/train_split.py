@@ -266,6 +266,20 @@ def evaluate_model(model_path, eval_listfile):
     return None
 
 # ----------------------------
+# EXTRA: Compare default vs fine-tuned model
+# ----------------------------
+def evaluate_default_model(eval_listfile):
+    """Evaluate the default Tesseract model (TRAINEDDATA) on eval_listfile."""
+    default_model = TRAINEDDATA  # path to eng_best.traineddata
+    print("\nEvaluating DEFAULT Tesseract English model...")
+    return evaluate_model(default_model, eval_listfile)
+
+def evaluate_finetuned_model(eval_listfile, finetuned_path):
+    """Evaluate the fine-tuned model at finetuned_path on eval_listfile."""
+    print("\nEvaluating FINE-TUNED model...")
+    return evaluate_model(finetuned_path, eval_listfile)
+
+# ----------------------------
 # MAIN
 # ----------------------------
 if __name__ == "__main__":
@@ -278,11 +292,29 @@ if __name__ == "__main__":
     run_training(lstm_path, train_listfile)
     final_traineddata_path = finalize_model()
 
+    # Evaluate the fine-tuned model and print the original single-model accuracy (kept for backward compatibility)
     accuracy = evaluate_model(final_traineddata_path, eval_listfile)
-
     if accuracy is not None:
         print(f"\nFinal Model Accuracy: {accuracy * 100:.2f}%")
     else:
         print("\nEvaluation did not produce an accuracy metric.")
+
+    # ----------------------------
+    # NEW: Compare default vs fine-tuned and print requested formatted output
+    # ----------------------------
+    default_acc = evaluate_default_model(eval_listfile)
+    finetuned_acc = evaluate_finetuned_model(eval_listfile, final_traineddata_path)
+
+    # Format exactly as requested
+    def fmt_acc(a):
+        if a is None:
+            return "could not compute accuracy"
+        else:
+            return f"{a * 100:.2f}%"
+
+    print("\n" + ("-" * 30))
+    print(f"non fine tuned: {fmt_acc(default_acc)}")
+    print(f"fine tuned: {fmt_acc(finetuned_acc)}")
+    print("-" * 30 + "\n")
 
     print("Done.")
