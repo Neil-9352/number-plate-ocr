@@ -29,6 +29,12 @@ async def detect_plate(req: ImageRequest):
     try:
         plate = detect_and_ocr(req.image_base64)
         type = detect_vehicle(req.image_base64)
+        
+        if type is None:
+            return JSONResponse(
+                {"error": "No valid vehicle detected"},
+                status_code=422
+            )
 
         if plate == "Invalid plate":
             # Semantic failure — image ok, but no plate detected
@@ -51,12 +57,12 @@ async def root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True)
-    # uvicorn.run(
-    #     "server:app",
-    #     host="0.0.0.0",
-    #     port=8000,
-    #     reload=True,
-    #     ssl_keyfile="certs/key.pem",
-    #     ssl_certfile="certs/cert.pem"
-    # )
+    # uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(
+        "server:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        ssl_keyfile="certs/key.pem",
+        ssl_certfile="certs/cert.pem"
+    )

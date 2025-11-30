@@ -36,6 +36,8 @@ def detect_vehicle(image_input):
                 return "car"
             elif class_id == 3:
                 return "bike"
+            else:
+                return None
     return None
 
 # Example usage
