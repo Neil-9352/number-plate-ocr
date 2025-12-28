@@ -12,7 +12,7 @@ os.makedirs(FILTERED_DIR, exist_ok=True)
 VALID_EXTS = [".jpg", ".jpeg", ".png"]
 
 # Regex for Indian license plates (normal + Delhi)
-PLATE_REGEX = re.compile(r"^[A-Z]{2}[0-9]{1,2}[A-Z]{0,3}[0-9]{3,4}$")
+PLATE_REGEX = re.compile(r"^[A-Z]{2}[0-9]{1,2}[A-Z]{0,3}[0-9]{4}$")
 
 def is_valid_plate(text: str) -> bool:
     """Check if text matches Indian license plate pattern (incl. Delhi)."""

@@ -22,8 +22,9 @@ async def detect_plate(req: ImageRequest):
             "image_base64": "data:image/jpeg;base64,...."
         }
     Returns:
-        200: {"plate": "MH12AB1234", "type": "car"}
+        200: {"plate": "AS01AB1234", "type": "car"}
         422: {"error": "No valid plate detected"}
+        422: {"error": "No valid vehicle detected"}
         400: {"error": "Invalid image input"}
     """
     try:
@@ -37,7 +38,6 @@ async def detect_plate(req: ImageRequest):
             )
 
         if plate == "Invalid plate":
-            # Semantic failure — image ok, but no plate detected
             return JSONResponse(
                 {"error": "No valid plate detected"},
                 status_code=422

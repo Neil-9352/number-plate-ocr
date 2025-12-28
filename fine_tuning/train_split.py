@@ -292,16 +292,7 @@ if __name__ == "__main__":
     run_training(lstm_path, train_listfile)
     final_traineddata_path = finalize_model()
 
-    # Evaluate the fine-tuned model and print the original single-model accuracy (kept for backward compatibility)
-    accuracy = evaluate_model(final_traineddata_path, eval_listfile)
-    if accuracy is not None:
-        print(f"\nFinal Model Accuracy: {accuracy * 100:.2f}%")
-    else:
-        print("\nEvaluation did not produce an accuracy metric.")
-
-    # ----------------------------
-    # NEW: Compare default vs fine-tuned and print requested formatted output
-    # ----------------------------
+    # Compare default vs fine-tuned and print requested formatted output
     default_acc = evaluate_default_model(eval_listfile)
     finetuned_acc = evaluate_finetuned_model(eval_listfile, final_traineddata_path)
 
@@ -317,4 +308,10 @@ if __name__ == "__main__":
     print(f"fine tuned: {fmt_acc(finetuned_acc)}")
     print("-" * 30 + "\n")
 
+    if finetuned_acc is not None:
+        print(f"\nFinal Model Accuracy: {finetuned_acc * 100:.2f}%")
+    else:
+        print("\nEvaluation did not produce an accuracy metric.")
+
     print("Done.")
+0
